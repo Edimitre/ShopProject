@@ -1,0 +1,32 @@
+package com.edi.MyShopProject.entity;
+
+
+import lombok.*;
+
+import javax.persistence.*;
+
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Entity
+public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id ;
+
+    @Column(nullable = false, length = 25, unique = true)
+    private String name;
+
+
+    private Float price;
+
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+}
